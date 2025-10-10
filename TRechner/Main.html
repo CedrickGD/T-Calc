@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark-purple">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scientific Calculator + Reactive Net</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="netCanvas" aria-hidden="true"></canvas>
+
+  <div class="theme-controls">
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Light/Dark" aria-pressed="false">☀️</button>
+    <div class="accent-wrap">
+      <label for="accentSelect" class="accent-label">Accent</label>
+      <div class="select-shell">
+        <span class="accent-dot" aria-hidden="true"></span>
+        <select id="accentSelect" class="accent-select" aria-label="Choose accent theme">
+          <option value="classic">Classic</option>
+          <option value="blue">Blue</option>
+          <option value="pink">Pink</option>
+          <option value="orange">Orange</option>
+          <option value="purple">Purple</option>
+          <option value="magenta">Magenta</option>
+        </select>
+        <span class="chevron" aria-hidden="true">▾</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="calculator" role="application" aria-label="Calculator">
+      <div class="display-container">
+        <input
+          id="result"
+          class="display"
+          type="text"
+          inputmode="text"
+          aria-readonly="true"
+          readonly
+          placeholder="0"
+        />
+        <button id="historyToggle" class="history-toggle" aria-label="Toggle History">◴</button>
+      </div>
+
+      <div id="historyPanel" class="history-panel" hidden>
+        <ul id="historyList"></ul>
+      </div>
+
+      <div class="buttons">
+        <button class="btn btn-mem" data-action="mem-clear">MC</button>
+        <button class="btn btn-mem" data-action="mem-recall">MR</button>
+        <button class="btn btn-mem" data-action="mem-plus">M+</button>
+        <button class="btn btn-danger" data-action="back">⌫</button>
+
+        <button class="btn" data-val="(">(</button>
+        <button class="btn" data-val=")">)</button>
+        <button class="btn btn-op" data-val="sqrt(">√</button>
+        <button class="btn btn-op" data-val="^">xʸ</button>
+
+        <button class="btn" data-val="7">7</button>
+        <button class="btn" data-val="8">8</button>
+        <button class="btn" data-val="9">9</button>
+        <button class="btn btn-op" data-val="/">÷</button>
+        
+        <button class="btn" data-val="4">4</button>
+        <button class="btn" data-val="5">5</button>
+        <button class="btn" data-val="6">6</button>
+        <button class="btn btn-op" data-val="*">×</button>
+        
+        <button class="btn" data-val="1">1</button>
+        <button class="btn" data-val="2">2</button>
+        <button class="btn" data-val="3">3</button>
+        <button class="btn btn-op" data-val="-">−</button>
+        
+        <button class="btn btn-danger" data-action="clear">C</button>
+        <button class="btn" data-val="0">0</button>
+        <button class="btn" data-val=".">.</button>
+        <button class="btn btn-op" data-val="+">+</button>
+
+        <button class="btn btn-eq btn-span-4" data-action="equals">=</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.min.js"></script>
+  <script src="./net.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
